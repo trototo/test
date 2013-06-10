@@ -1,0 +1,1294 @@
+<script type="text/javascript">
+  /* Данная функция создаёт кроссбраузерный объект XMLHTTP */
+  function getXmlHttp() {
+    var xmlhttp;
+    try {
+      xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+    try {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (E) {
+      xmlhttp = false;
+    }
+    }
+    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+      xmlhttp = new XMLHttpRequest();
+    }
+    return xmlhttp;
+  }
+
+  
+  
+  var str= '{ \
+    "name": "Вася", \
+    "age": 25 \
+}';
+
+</script>
+<script  type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&hl=ru"></script>
+<style>
+h1 {
+line-height: 10%;
+font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+font-weight: 200;
+letter-spacing: 0.00em;
+//line-height: 44pt;
+color:white;
+text-shadow: 2px 0px 0px rgba(0,0,0,0.3);
+}
+
+h2 {
+line-height: 10%;
+font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+font-weight: 200;
+letter-spacing: 0.00em;
+color:white;
+}
+
+body {
+height:100%;
+margin:0px;padding:0px;
+//width:1024;
+//height:768;
+//background-image: url(img/bg.jpg);
+
+background-color:#000;
+}
+
+header {
+//background-color:#808080;
+height:15%;
+background-color: rgba(0,0,0,0.7);
+}
+
+
+
+.headin {
+margin:0 auto;
+width:80%;
+height:100%;
+}
+
+.row .headin:hover {
+width:90%;
+cursor:pointer;
+}
+
+.row .headin:active {
+opacity:0.2;
+cursor:pointer;
+}
+
+.headin_mini {
+margin:0 auto;
+width:80%;
+height:100%;
+}
+
+
+
+.table .headin,  .row .headin{
+text-align: center;
+-webkit-transition: 0.7s;
+}
+
+h3, h4{
+line-height: 60%;
+font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+font-weight: 200;
+letter-spacing: 0.00em;
+color:white;
+}
+
+
+.hed {
+//text-align:left;
+width:20%;
+display:inline-block;
+margin-left:5%;
+float:left;
+height:100%;
+
+}
+
+.content{
+
+}
+
+
+.hed_r {
+//text-align:right;
+width:20%;
+float:right;
+margin-right:5%;
+height:100%;
+}
+
+.time {
+display:inline-block;
+width:50%;
+margin-right:5%;
+height:100%;
+margin:0 auto;
+text-align:center;
+}
+
+.weather {
+display:inline-block;
+height:100%;
+float:right;
+margin-right:5%;
+}
+
+.time h3{
+text-align:center;
+}
+
+.time h2, .weather h2{
+font-weight:bold;
+text-align:right;
+}
+
+.time h2{
+text-align:center;
+}
+
+.time h2{
+//line-height: 10%;
+}
+
+.table, .row{
+//background-color: #595959;
+background-color: rgba(0,0,0,0.9);
+width: 100%;
+height: 5%;
+}
+
+.table h4, .row h4{
+line-height: 0%;
+}
+
+
+.table h4 {
+margin-top:9%;
+}
+
+.center {
+text-align:center;
+height:100%;
+width:40%;
+display:inline-block;
+}
+
+.center_r {
+float:right;
+display:inline-block;
+width:50%;
+}
+
+.center_l {
+float:left;
+display:inline-block;
+width:50%;
+}
+
+.row {
+height:11%;
+}
+
+.row h1 {
+line-height: 0%;
+font-weight:bold;
+-webkit-transition: 0.7s;
+}
+
+.row h3 {
+line-height: 20%;
+}
+
+.row:nth-child(2n+1) .center_l, .row:nth-child(2n+1) .center_r {
+background-color:#008a96;
+height:100%;
+//background-color: rgba(119,221,85,0.5);
+}
+
+.row:nth-child(2n) .center_l, .row:nth-child(2n) .center_r {
+background-color:#00afac;
+height:100%;
+//background-color: rgba(85,221,34,0.5);
+}
+
+.row .hed, .row .hed_r {
+text-align:center;
+}
+
+
+.row:hoverr {
+//-webkit-transition: 0.7s;
+//width:0px;
+
+    padding: 0 -10px;
+
+}
+
+.row:nth-child(2n) {
+background-color: #00afac;
+//background-color: rgba(102,255,51,0.3);
+} 
+
+.row:nth-child(2n+1) {
+background-color:#008b96;
+//background-color: rgba(153,255,102,0.3);
+} 
+
+font {
+font-size:50%;
+}
+
+.is1 {
+line-height: 30%;
+}
+
+.is2 {
+line-height: 10%;
+}
+.row   img {
+height:80%;
+margin-top:5%;
+}
+
+.footer{
+background-color:silver;
+width:100%;
+height:15%; 
+bottom:0px;
+position:absolute;
+background-color: rgba(0,0,0,0.9);
+text-align: center;
+}
+
+.footer .table{
+background-color:
+}
+
+.footer  img{
+height:65%;
+valign:middle;
+}
+
+.footer .table{
+height:80%;
+position:absolute;
+bottom:11%;
+background-color: rgba(0,0,0,0.0);
+}
+
+.footer h4{
+margin-top:10%;
+}
+
+.button:hover {
+cursor:pointer;
+}
+
+</style>
+
+<body  onresize="OnResizeDocument ()">
+<script>
+ 
+
+row_count = 5; 
+function getClientWidth()
+{
+  return document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientWidth:document.body.clientWidth;
+}
+function getClientHeight()
+{
+  return document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientHeight:document.body.clientHeight;
+}
+
+window.onload = function () {
+
+summa();
+  function summa() {
+    var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
+    xmlhttp.open('POST', 'http://readcat.ru/bus/post.php', true); // Открываем асинхронное соединение
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
+   // xmlhttp.send("a=" + encodeURIComponent(a) + "&b=" + encodeURIComponent(b)); // Отправляем POST-запрос
+        xmlhttp.send("q=1"); 
+		 xmlhttp.onreadystatechange = function() {
+			// Отправляем POST-запрос
+	 // Ждём ответа от сервера
+	
+      if (xmlhttp.readyState == 4) {
+  // Ответ пришёл
+        if(xmlhttp.status == 200) { // Сервер вернул код 200 (что хорошо)
+		   track = eval('(' + xmlhttp.responseText + ')');
+          //alert(xmlhttp.responseText);
+		  //alert(track.time);
+          //document.getElementById("summa").innerHTML = xmlhttp.responseText;
+		    
+          //document.getElementById("number").innerHTML = track.race_number;	
+          //document.getElementById("time").innerHTML = track.time;
+          	  // Выводим ответ сервера
+        
+			  fill();
+        }
+		} 	
+      }
+}
+
+
+	  function fill(){
+	  row = document.getElementsByClassName("row");	
+	  
+	  //alert(row[0].children[0].children[1].children[0].innerHTML);
+	  
+	  for (var i = 0; i < row_count; i++) {
+	  row[i].id = track.track[i].obj_id;
+	  
+	  row[i].onclick = function(){initialize(track.track[i].obj_id);};
+
+	  
+	  var img = document.createElement('img');
+	  if(track.track[i].type == 'М'){img.src = "img/\/mar.png";};
+	  if(track.track[i].type == 'Т'){img.src = "img/\/trall.png";};
+	  if(track.track[i].type == 'А'){img.src = "img/\/bus.png";};
+	  if(track.track[i].type == null){img.src = "";};
+	  row[i].children[0].children[0].appendChild(img);
+	  
+	  var h1 = document.createElement('h1');
+	  var h4 = document.createElement('h4');
+	  h1.innerHTML = track.track[i].race_number;
+	  h4.innerHTML = track.track[i].go_to;
+	  row[i].children[0].children[1].children[0].appendChild(h1);
+	  row[i].children[0].children[1].children[0].appendChild(h4);
+	  
+	  var h1 = document.createElement('h1');
+	  var h4 = document.createElement('h4');
+	  h1.innerHTML = Math.floor(track.track[i].time / 60);
+	  h4.innerHTML = 'мин';
+	  row[i].children[0].children[1].children[1].appendChild(h1);
+	  row[i].children[0].children[1].children[1].appendChild(h4);
+
+	  for (var j = i + 1; j < track.track.length; j++) {
+	  if(track.track[i].race_number == track.track[j].race_number){
+	  var h1 = document.createElement('h1');
+	  var h4 = document.createElement('h4');
+	  h1.innerHTML = Math.floor(track.track[j].time / 60);
+	  h4.innerHTML = 'мин';
+	  row[i].children[0].children[2].appendChild(h1);
+	  row[i].children[0].children[2].appendChild(h4);
+	  break;
+	  };
+	  
+	  }
+	  }
+	  
+	  //alert(track.track[1].type);
+	  }
+    
+
+function sec() {
+     var xmlhttp = getXmlHttp(); 
+    xmlhttp.open('POST', 'http://readcat.ru/bus/post.php', true); // Открываем асинхронное соединение
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
+    xmlhttp.send("q=1"); 
+	xmlhttp.onreadystatechange = function() {
+			
+      if (xmlhttp.readyState == 4) {
+        if(xmlhttp.status == 200) {  
+		   track = eval('(' + xmlhttp.responseText + ')');
+          //alert(xmlhttp.responseText);
+		  //alert(track.time);
+          //document.getElementById("summa").innerHTML = xmlhttp.responseText;
+		    
+          //document.getElementById("number").innerHTML = track.race_number;	
+          //document.getElementById("time").innerHTML = track.time;
+          	  // Выводим ответ сервера
+			    if((track.track[0].obj_id != null) && (track.track[0].obj_id != '')) {
+			redraw();
+			} else {alert('error response');}
+        }
+		} 	
+      }
+  
+
+}
+
+setInterval(sec, 10000);
+setInterval(wr_hours, 10000);
+setInterval(weather, 90000);
+wr_hours();
+weather();
+OnResizeDocument (); 
+};
+
+function addStyleSheet() {
+	var style = document.createElement('style');
+	style.type = 'text/css';
+	document.getElementsByTagName('head')[0].appendChild(style);
+	return document.styleSheets[document.styleSheets.length - 1];
+}
+function addStyle(ss, sel, rule) {
+	if (ss.addRule) { ss.addRule(sel, rule); }
+	else { if (ss.insertRule) { ss.insertRule(sel + ' {' + rule + '}', ss.cssRules.length); } }
+}
+
+var s = addStyleSheet();
+function OnResizeDocument () {
+addStyle(s, '.row', "height:"+65/row_count+"%");
+
+if(getClientWidth() <= 500) {
+addStyle(s, 'h2', "font-size:" + getClientHeight()*0.038 *1.0);
+addStyle(s, '.table', "display:none");
+addStyle(s, '.is1', "line-height: 90%");
+addStyle(s, '.is2', "margin-top: -4%");
+addStyle(s, 'h4', "margin-top: -4%");
+addStyle(s, '.center_l h4', "display:none");
+addStyle(s, '.headin', "width:100%");
+
+} else {
+addStyle(s, '.headin', "width:80%");
+addStyle(s, '.center_l h4', "display:block");
+addStyle(s, '.is1', "line-height: 30%;");
+addStyle(s, '.is2', "margin-top: auto");
+addStyle(s, '.table', "display:block");
+addStyle(s, 'h1', "font-size:" + getClientHeight()*0.038 *1.7);
+addStyle(s, 'h2', "font-size:" + getClientHeight()*0.03 *1.7);
+addStyle(s, 'h3', "font-size:" + getClientHeight()*0.02 *1.7);
+addStyle(s, 'h4', "font-size:" + getClientHeight()*0.015 *1.4);
+}
+}
+
+function roll(i){
+
+row = document.getElementsByClassName('row'); 
+
+row[i].style.cssText="-webkit-transform-style: preserve-3d; -webkit-transition: 0.7s;-webkit-transform: rotateX(270deg);-moz-transform: rotateX(270deg);-o-transform: rotateX(270deg);" + row[0].style.cssText; 
+
+//hide();
+setTimeout(hide, 300);
+function hide() {
+
+//row[i].removeChild(row[i].childNodes[1]);
+row[i].innerHTML = '';
+}
+
+function second_passed() {
+
+
+row[i].style.cssText="height:0px;" + row[i].style.cssText; 
+//dell();
+setTimeout(dell, 700);
+function dell(){
+row[i].parentNode.removeChild( row[i] );
+add();
+};
+
+}
+//second_passed();
+setTimeout(second_passed, 800);
+
+}
+
+
+
+function redraw() {
+
+
+var row = document.getElementsByClassName("row");	
+//alert(track.track[0].race_number);
+//alert(row[0].children[0].children[1].children[0].children[0].innerHTML);
+tt=0;
+for (var i = 0; i < row.length; i++) {
+p1 = 0;
+//alert (row[i].children[0].children[1].children[0].children[0].innerHTML);
+for (var j = i + 1; j < track.track.length; j++) {
+if(row[i].children[0].children[1].children[0].children[0].innerHTML){
+	  if(row[i].children[0].children[1].children[0].children[0].innerHTML == track.track[j].race_number){
+	  var h1 = document.createElement('h1');
+	  var h4 = document.createElement('h4');
+	  h1.innerHTML = Math.floor(track.track[j].time / 60);
+	  h4.innerHTML = 'мин';
+	  row[i].children[0].children[2].innerHTML = '';
+	  row[i].children[0].children[2].appendChild(h1);
+	  row[i].children[0].children[2].appendChild(h4);
+	  break;
+	  };
+	  }
+	  }
+
+
+for (var j = 0; j < row.length; j++) {
+if(typeof row[i].id != 'undefined'){
+
+if(row[i].id == track.track[j].obj_id){
+p1 = 1;
+if(Math.floor(track.track[j].time / 60) != null){
+if(Math.floor(track.track[j].time / 60) == null){alert(Math.floor(track.track[j].time / 60));}
+if(row[i].children[0].children[1].children[1].children[0].innerHTML != Math.floor(track.track[j].time / 60)){
+row[i].children[0].children[1].children[1].children[0].style.cssText = " -webkit-transition: 0.3s;";
+row[i].children[0].children[1].children[1].children[0].innerHTML = Math.floor(track.track[j].time / 60);
+
+setTimeout(sy,800,i);
+function sy(i){
+row[i].children[0].children[1].children[1].children[0].style.cssText = " -webkit-transition: 0.3s;";
+
+//row[i].style.cssText="-webkit-transform-style: preserve-3d; -webkit-transition: 0.7s;-webkit-transform: rotateX(270deg);-moz-transform: rotateX(270deg);-o-transform: rotateX(270deg);" + row[0].style.cssText; 
+//document.getElementById(track.track[i].obj_id).style.cssText = document.getElementById(track.track[i].obj_id).style.cssText + "-webkit-transform-style: preserve-3d; -webkit-transition: 0.7s;-webkit-transform: rotateX(270deg);-moz-transform: rotateX(270deg);-o-transform: rotateX(270deg);";
+}
+
+};}}
+}
+}
+
+if(p1 == 1){}else{
+setTimeout(roll,0*tt,i);
+//roll(i);
+tt++;
+}
+}
+
+
+sort();
+}
+
+
+function add(){
+var row = document.getElementsByClassName("row");	
+var content = document.getElementById("content");
+
+for (var i = 0; i < row_count; i++) {
+k = 0;
+
+for (var j = i + 1; j < track.track.length; j++) {
+	  if(track.track[i].race_number == track.track[j].race_number){
+	  hedr = '<h1>'+Math.floor(track.track[j].time / 60)+'</h1><h4>мин</h4>';
+	  break;
+	  }else{hedr = '';};
+	  
+	  }
+
+
+for (var j = 0; j < row.length; j++) {
+if(track.track[i].obj_id == row[j].id){k = 1;}
+}
+if(k == 0){
+	
+var new_row = document.createElement("div");
+new_row.className = 'row';
+
+
+new_row.id = track.track[i].obj_id;
+new_row.onclick = function(){initialize(track.track[i].obj_id);};
+
+if(track.track[i].type == 'М'){img = "img/\/mar.png";};
+if(track.track[i].type == 'Т'){img = "img/\/trall.png";};
+if(track.track[i].type == 'А'){img = "img/\/bus.png";};
+if(track.track[i].type == null){img = "";};
+
+new_row.style.cssText="width:0px; -webkit-transition: 0.5s;margin:0 auto;"; 
+
+new_row.innerHTML = '<div class="headin"><div class="hed"><img src="'+img+'"/></div><div class="center"><div class="center_l"><h1 >'+track.track[i].race_number+'</h1><h4 >'+track.track[i].go_to+'</h4></div><div class="center_r"><h1 >'+Math.floor(track.track[i].time / 60)+'</h1><h4 >мин</h4></div></div><div class="hed_r" >'+hedr+'</div></div>';
+content.appendChild(new_row); 
+
+
+setTimeout(sh,0,i);
+function sh(i){
+document.getElementById(track.track[i].obj_id).style.cssText = document.getElementById(track.track[i].obj_id).style.cssText + ";" + "width:100%";
+}
+}
+}
+	  
+sort();	
+}
+
+
+function sort(){ 
+for (var j = 0; j < row.length; j++) {
+for (var i = 0; i < row.length-1; i++) {
+if(row[i].children[0].children[1].children[1]!= null){
+if(row[i].children[0].children[1].children[1].children[0].innerHTML > row[i+1].children[0].children[1].children[1].children[0].innerHTML){
+var html = row[i].innerHTML;
+row[i].innerHTML = row[i+1].innerHTML;
+row[i+1].innerHTML = html;
+   }
+  }
+  }
+ }
+
+}
+
+function map(){
+
+}
+
+
+name_month=new Array ("Января","Февраля","Марта", "Апреля","Мая", "Июня","Июля","Августа","Сентября", "Октября","Ноября","Декабря");
+name_day=new Array ("Воскресенье","Понедельник", "Вторник","Среда","Четверг", "Пятница","Суббота");
+
+function wr_hours()
+{
+time=new Date();
+
+time_sec=time.getSeconds();
+time_min=time.getMinutes();
+time_hours=time.getHours();
+time_wr=((time_hours<10)?"0":"")+time_hours;
+time_wr+=":";
+time_wr+=((time_min<10)?"0":"")+time_min;
+//time_wr+=":";
+//time_wr+=((time_sec<10)?"0":"")+time_sec;
+
+time_day=name_day[time.getDay()]+", "+time.getDate()+" "+name_month[time.getMonth()];
+
+
+document.getElementById("hour").innerHTML=time_wr; 
+document.getElementById("day").innerHTML=time_day; 
+}
+
+
+function weather()
+{
+   var xmlhttp = getXmlHttp(); 
+    xmlhttp.open('POST', 'http://readcat.ru/bus/weather.php', true); // Открываем асинхронное соединение
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
+    xmlhttp.send(""); 
+	xmlhttp.onreadystatechange = function() {
+			
+      if (xmlhttp.readyState == 4) {
+        if(xmlhttp.status == 200) {
+		
+          weather = xmlhttp.responseText;
+		  weather = weather.split(',')
+		  
+		  document.getElementsByClassName('is1')[0].innerHTML = weather[0];
+		  document.getElementsByClassName('is2')[0].innerHTML = weather[1];
+		  
+        }
+		} 	
+      }
+  
+}
+
+
+</script>
+<header id="header" class="header">
+ <div class="headin">
+ <span class="hed">
+         <h3 >Остановка:</h3>
+         <h2 >Подлипаева</h2>
+ </span>
+ 
+ <span  class="weather">
+     <h2 class="is1"></h2>
+     <h3 class="is2"></h3>
+ </span>
+ 
+ <span  class="time">
+     <h2 id="hour" class="is1"></h2>
+     <h3 id="day" class="is2"></h3>
+ </span>
+ </div>
+</header>
+
+<div class="table">
+   <div class="headin">
+      <div class="hed">
+          <h4 ><font>&#9660;&nbsp</font>Тип транспорта</h4>
+      </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	         <h4 ><font>&#9660;&nbsp</font>Номер</h4>
+		 </div>
+		 <div class="center_r">
+		     <h4 ><font>&#9660;&nbsp</font>Ближайший</h4>
+	     </div>
+	  </div>
+	 
+      <div class="hed_r">
+          <h4 ><font>&#9660;&nbsp</font>Следующий</h4>
+      </div>
+   </div>
+</div>
+
+
+
+<div class="mini">
+<div class="table">
+   <div class="headin_mini">
+     <div class="hed">
+      <img src="img/busb.png"/>
+	  </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	         <img src="img/marb.png"/>
+            
+		 </div>
+		 <div class="center_r">
+		     <img src="img/trallb.png"/>
+            
+	     </div>
+	  </div>
+	 
+      <div class="hed_r" onClick="map()">
+          <img src="img/busstop.png"/>
+        
+      </div>
+   </div>
+</div>
+
+      <div class="road">
+      </div>
+	  
+
+   <div class="mini_time">
+     <div class="hed" >
+	 <div class="centr">
+	 <div class="bus_num">
+      <h3>47</h3>
+      </div>
+	  <h3 style="float:right">18:43</h3>
+	  </div>
+     </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+          <div class="centr">
+	 <div class="bus_num">
+      <h3>47</h3>
+      </div>
+	  <h3 style="float:right">18:43</h3>
+	  </div>
+		 </div>
+		 <div class="center_r">
+         <div class="centr">
+	 <div class="bus_num">
+      <h3>47</h3>
+      </div>
+	  <h3 style="float:right">18:43</h3>
+	  </div>
+	     </div>
+	  </div>
+	 
+      <div class="hed_r" onClick="map()">
+        <h3>18:15</h3>
+      </div>
+   </div> 
+</div>
+
+
+
+
+<div  id="content" class="content">
+
+<div class="row">
+   <div class="headin">
+      <div class="hed">
+         
+      </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	    
+		 </div>
+		 <div class="center_r">
+
+	     </div>
+	  </div>
+	  
+	   <div class="hed_r" >
+
+      </div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="headin">
+      <div class="hed">
+         
+      </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	        
+		 </div>
+		 <div class="center_r">
+		     
+	     </div>
+	  </div>
+	 
+	  
+	   <div class="hed_r" >
+          
+      </div>
+   </div>
+</div>
+
+
+<div class="row">
+   <div class="headin">
+      <div class="hed">
+         
+      </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	        
+		 </div>
+		 <div class="center_r">
+		    
+	     </div>
+	  </div>
+	 
+	  
+	   <div class="hed_r" >
+         
+      </div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="headin">
+      <div class="hed">
+         
+      </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	       
+		 </div>
+		 <div class="center_r">
+		    
+	     </div>
+	  </div>
+	 
+	  
+	   <div class="hed_r" >
+         
+      </div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="headin">
+      <div class="hed">
+         
+      </div>
+	  
+	  <div class="center">
+	     <div class="center_l">
+	        
+		 </div>
+		 <div class="center_r">
+		    
+	     </div>
+	  </div>
+	 
+	  
+	   <div class="hed_r" >
+         
+      </div>
+   </div>
+</div>
+
+
+
+</div>
+<div id="map-canvas" class="map-canvas" style="right:0px;position:absolute;top:20%;z-index:-2;height:65%;width:100%"></div>
+<div id="bus_num" class="bus-num" style="background-color:#008b96;right:0px;position:absolute;top:20%;z-index:-3;height:65%;width:100%">
+<div class="form">
+<input class="input" id="InputN" size="40" list="17" value="" type="text" name="page_s" placeholder="Номер маршрута"/>
+<datalist id="17">
+ <option value="Текст1">
+ <option value="Текст2">
+</datalist>
+<div id="keyboard">
+<div><button onclick="ProcButton(this.innerHTML);">1</button><button onclick="ProcButton(this.innerHTML);">2</button><button onclick="ProcButton(this.innerHTML);">3</button></div>
+<div><button onclick="ProcButton(this.innerHTML);">4</button><button onclick="ProcButton(this.innerHTML);">5</button><button onclick="ProcButton(this.innerHTML);">6</button></div>
+<div><button onclick="ProcButton(this.innerHTML);">7</button><button onclick="ProcButton(this.innerHTML);">8</button><button onclick="ProcButton(this.innerHTML);">9</button></div>
+<div><button onclick="ProcButtonClear();">&#9003;</button><button onclick="ProcButton(this.innerHTML);">0</button><button onclick="ProcButtonEnter();">&#10132;</button></div>
+</div>
+</div>
+</div>
+<style>
+#keyboard{
+margin-top: 1%;
+}
+
+#keyboard button{
+width:11%;
+height:11%;
+background-color:#000;
+color:#fff;
+line-height: 10%;
+font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+font-weight: 200;
+letter-spacing: 0.00em;
+color:white;
+font-size:2em;
+border:0px;
+margin:1%;
+}
+
+bus-num{
+background-color:red;
+right:0px;
+top:20%;
+z-index:-3;
+height:65%;
+width:100%;
+text-align:center;
+}
+
+.input{
+font-size: 25px;
+border:solid 3px #000;
+width:37%;
+height:15%;
+padding:2%;
+}
+
+.form{
+margin-top:3%;
+}
+
+</style>
+<script>
+function ProcButton(num)
+{
+ document.getElementById("InputN").value+=num;
+}
+
+function ProcButtonClear()
+{
+ document.getElementById("InputN").value="";
+}
+
+function hide(action){
+
+for (var j = 0; j < row_count; j++) {
+document.getElementsByClassName('row')[j].style.cssText = "-webkit-transition: 0.7s;width:0px";
+
+}
+addStyle(s, '.headin', "display:none");
+
+
+document.getElementsByClassName('header')[0].style.cssText = "-webkit-transition: 0.7s;width:0px";
+document.getElementsByClassName('table')[0].style.cssText = "-webkit-transition: 0.7s;width:0px";
+document.getElementsByClassName('mini')[0].style.cssText = "-webkit-transition: 0.7s;width:100%";
+document.getElementsByClassName('mini_time')[0].style.cssText = "-webkit-transition: 0.7s;display:block";
+
+
+document.getElementById('foot_navi').style.cssText = "-webkit-transition: 0.7s;width:0px;display:none";
+document.getElementById('back').style.cssText = "-webkit-transition: 0.7s;width:100%;opacity:1.0;";
+
+if(action == 'map_view'){map_view();};
+if(action == 'auto'){bus_num();};
+}
+
+function bus_num(){
+document.getElementsByClassName('bus-num')[0].style.cssText = "text-align:center;background-color:#008b96;z-index:2;right:0px;position:absolute;top:20%;height:65%;width:100%";
+
+}
+
+function start_window(action){
+document.getElementsByClassName('bus-num')[0].style.cssText = "background-color:#008b96;z-index:-3;right:0px;position:absolute;top:20%;height:65%;width:100%";
+document.getElementsByClassName('map-canvas')[0].style.cssText = "z-index:-2;right:0px;position:absolute;top:20%;height:65%;width:100%";
+
+
+
+for (var j = 0; j < row_count; j++) {
+document.getElementsByClassName('row')[j].style.cssText = "-webkit-transition: 0.7s;width:100%";
+}
+addStyle(s, '.headin', "display:block");
+document.getElementsByClassName('content')[0].style.cssText = "-webkit-transition: 0.7s;display:block";
+
+document.getElementsByClassName('header')[0].style.cssText = "-webkit-transition: 0.7s;width:100%";
+document.getElementsByClassName('table')[0].style.cssText = "-webkit-transition: 0.7s;width:100%";
+document.getElementsByClassName('mini')[0].style.cssText = "-webkit-transition: 0.7s;width:0px";
+document.getElementsByClassName('mini_time')[0].style.cssText = "-webkit-transition: 0.7s;display:none";
+
+
+document.getElementById('foot_navi').style.cssText = "-webkit-transition: 0.7s;width:100%;display:block";
+document.getElementById('back').style.cssText = "-webkit-transition: 0.7s;width:0%;opacity:0.0;";
+
+if(action == 'map_view'){map_view();};
+
+}
+
+
+
+
+
+function map_view(){
+
+document.getElementsByClassName('map-canvas')[0].style.cssText = "z-index:2;right:0px;position:absolute;top:20%;height:65%;width:100%";
+
+var center = new google.maps.LatLng(57.768527,40.925092);
+directionsDisplay = new google.maps.DirectionsRenderer();
+  var mapOptions = {
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center:  center
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  directionsDisplay.setMap(map);
+
+}
+
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var haight = new google.maps.LatLng(57.801037,40.920113);
+var oceanBeach = new google.maps.LatLng(57.739796,41.020187);
+
+		  
+		  
+		  
+		  function post_map(num){
+		  //alert(num);
+    var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
+    xmlhttp.open('POST', 'http://readcat.ru/bus/post_map.php', true); // Открываем асинхронное соединение
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
+   // xmlhttp.send("a=" + encodeURIComponent(a) + "&b=" + encodeURIComponent(b)); // Отправляем POST-запрос
+        xmlhttp.send("id="+num); 
+		 xmlhttp.onreadystatechange = function() {
+			// Отправляем POST-запрос
+	 // Ждём ответа от сервера
+	
+      if (xmlhttp.readyState == 4) {
+  // Ответ пришёл
+  
+        if(xmlhttp.status == 200) { // Сервер вернул код 200 (что хорошо)
+		   bus_track = eval('(' + xmlhttp.responseText + ')');
+		 //alert(bus_track.track[0].lat);
+         calcRoute();
+        }
+		} 	
+      }
+}
+		  
+		  
+		  
+		  
+function initialize(num) {
+
+if(num || null){
+post_map(num);
+}
+  
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var mapOptions = {
+    zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: haight
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+  directionsDisplay.setMap(map);
+  
+}
+
+
+function calcRoute() {
+ 
+		  waypts = [];
+		 for (var i = 1; i < bus_track.track.length-7; i++) {
+          //alert(bus_track.track[i].lat);
+          // waypts.push({
+         //  location:new google.maps.LatLng(bus_track.track[i].lat,bus_track.track[i].lon)
+         // });
+               }
+
+var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(bus_track.track[3].lat,bus_track.track[3].lon),
+        map: map,
+        title: 'Bus',
+        zIndex: 15
+
+        });
+marker.setMap(map);
+		
+
+  var selectedMode = 'DRIVING';
+  var request = {
+      origin: new google.maps.LatLng(bus_track.track[0].lat,bus_track.track[0].lon),
+      destination: new google.maps.LatLng(bus_track.track[bus_track.track.length-1].lat,bus_track.track[bus_track.track.length-1].lon),
+	  waypoints: waypts,
+      optimizeWaypoints: true,
+	 
+      // Note that Javascript allows us to access the constant
+      // using square brackets and a string value as its
+      // "property."
+      travelMode: google.maps.TravelMode[selectedMode]
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+  
+  hide();
+}
+
+</script>
+
+
+
+<style>
+
+.mini{
+padding-top:1%;
+width:100%;
+height:18.5%; 
+position:absolute;
+top:0px;
+background-color: rgba(0,0,0,1);
+text-align: center;
+width:0px;
+-webkit-transition: 0.5s;
+right:1px;
+}
+
+.mini  img{
+height:100%;
+margin-top:0%;
+width:100%;
+}
+
+.mini .table{
+height:60%;
+}
+
+.mini h3{
+margin-top:0%;
+height:30%;
+line-height: 130%;
+}
+
+.mini h2{
+margin-top:0%;
+height:30%;
+line-height: 130%;
+font-weight: bold;
+color:black;
+font-family:  'Segoe UI Light','Open Sans', Verdana, Arial, Helvetica, sans-serif;
+letter-spacing:-3px;
+
+}
+
+.mini_time{
+height:35%;
+width:80%;
+margin:0 auto;
+display:none;
+}
+
+.road{
+height:4%;
+background-color:white;
+}
+
+.mini_number{
+height:1%;
+width:80%;
+margin:0 auto;
+padding-top:20px;
+}
+
+.bus_num{
+width: 35%;
+height:60%;
+background: white;
+-moz-border-radius: 0px;
+-webkit-border-radius: 0px;
+border-radius: 0px;
+display:inline-block;
+float:left;
+}
+
+.bus_num h3{
+margin-top:0%;
+height:30%;
+line-height: 130%;
+font-weight: bold;
+color:black;
+font-family:  'Segoe UI Light','Open Sans', Verdana, Arial, Helvetica, sans-serif;
+}
+
+.centr{
+width:85%;
+margin:0 auto;
+}
+
+#back{
+opacity:0.0;
+width:0%;
+float:center;
+}
+
+.back_but{
+width:20%;
+display:inline-block;
+height:100%;
+}
+
+.button img:active{
+opacity:0.4;
+}
+</style>
+
+
+<div class="footer">
+<div class="table" id="foot_navi">
+   <div class="headin_mini">
+     <div class="hed">
+	  <div class="button">
+      <img src="img/help_ico.png" />
+      <h4>Помощь</h4>
+	  </div>
+     </div>
+	 
+	  
+	  <div class="center">
+	     <div class="center_l">
+		   <div class="button">
+	         <img src="img/search_ico.png"/>
+             <h4>Поиск</h4>
+		   </div>
+		 </div>
+		 <div class="center_r">
+		  <div class="button" onClick="hide('auto')">
+		     <img src="img/bus_ico.png"/>
+             <h4>Маршруты</h4>
+		  </div>
+	     </div>
+	  </div>
+	 
+      <div class="hed_r" onClick="hide('map_view')">
+	   <div class="button">
+          <img src="img/map_ico.png"/><br>
+          <h4 >Карта</h4>
+	   </div>
+      </div>
+   </div>
+</div>
+
+<div class="table" id="back">
+   <div class="headin_mini">
+     <div class="back_but" onClick="start_window()">
+	  <div class="button">
+      <img src="img/back_ico.png" />
+      <h4>Вернуться</h4>
+	  </div>
+     </div>
+   </div>
+</div>
+</div>
+
+</body>
